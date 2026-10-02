@@ -5,7 +5,8 @@ website:
   title: "Chenghuiyu Fan's blog"
   navbar:
     right:
-      - about.qmd
+      - href: about.qmd
+        text: About the author
       - icon: github
         href: https://github.com/cfan0055
 format:
