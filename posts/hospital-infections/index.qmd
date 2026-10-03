@@ -1,7 +1,10 @@
 ---
 title: "The most common hospital infection is not the most harmful"
+description: "Counting infections and measuring harm give different answers."
 author: "Chenghuiyu Fan"
 date: "2026-10-03"
+categories: [health, data story]
+bibliography: references.bib
 ---
 
-This is a draft for future progress.
+The numbers in this post come from a study by @zacher2019.
