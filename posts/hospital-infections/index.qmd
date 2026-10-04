@@ -64,3 +64,19 @@ ggplot(burden_share, aes(x = share, y = fct_reorder(infection, cases), fill = fo
   theme_minimal(base_size = 12) +
   theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank())
 ```
+
+@tbl-per-case shows the harm from one infection.
+```{r}
+#| label: tbl-per-case
+#| tbl-cap: "One bloodstream infection costs about seven times as much healthy life as one urinary tract infection. Germany, 2011 and 2012."
+#| echo: false
+
+burden |>
+  mutate(years_per_100 = round(dalys / cases * 100)) |>
+  arrange(desc(years_per_100)) |>
+  select(infection, cases, years_per_100) |>
+  knitr::kable(
+    col.names = c("Infection", "Cases per 100,000 people each year", "Healthy years lost per 100 infections"),
+    align = c("l", "r", "r")
+  )
+```
