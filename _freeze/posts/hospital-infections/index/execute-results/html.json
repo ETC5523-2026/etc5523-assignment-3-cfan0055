@@ -1,0 +1,17 @@
+{
+  "hash": "0a500ce4f40c0c9c364e590b36ad8c3d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"The most common hospital infection is not the most harmful\"\ndescription: \"Counting infections and measuring harm give different answers.\"\nauthor: \"Chenghuiyu Fan\"\ndate: \"2026-10-03\"\ncategories: [health, data story]\nbibliography: references.bib\n---\n\n\n::: {.cell}\n\n:::\n\n\nThe numbers in this post come from a study by @zacher2019.\n\n\n::: {.cell}\n\n:::\n\n\n@fig-share shows two numbers for each infection.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![Bloodstream infection is 6% of all infections but causes 24% of the healthy years lost. Germany, 2011 and 2012.](index_files/figure-html/fig-share-1.png){#fig-share fig-alt='Two bar charts. Bloodstream infection has the shortest bar for share of infections and a long bar for share of healthy years lost.' width=768}\n:::\n:::\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

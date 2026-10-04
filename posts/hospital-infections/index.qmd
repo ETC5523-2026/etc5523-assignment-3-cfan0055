@@ -7,4 +7,60 @@ categories: [health, data story]
 bibliography: references.bib
 ---
 
+```{r}
+#| label: setup
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+burden <- tribble(
+  ~infection, ~cases, ~dalys,
+  "Pneumonia", 132.0, 86.1,
+  "Urinary tract infection", 265.1, 82.6,
+  "Bloodstream infection", 33.4, 72.2,
+  "Surgical site infection", 115.4, 35.7,
+  "C. difficile infection", 44.6, 25.9
+)
+```
+
 The numbers in this post come from a study by @zacher2019.
+
+```{r}
+#| echo: false
+
+burden_share <- burden |>
+  mutate(
+    cases_share = cases / sum(cases) * 100,
+    dalys_share = dalys / sum(dalys) * 100,
+    focus = if_else(infection == "Bloodstream infection", "Focus", "Context")
+  )|>
+  pivot_longer(c(cases_share, dalys_share), names_to = "measure", values_to = "share")|>
+  mutate(
+    measure = if_else(measure == "cases_share", "Share of all infections", "Share of healthy years lost")
+  )
+```
+
+@fig-share shows two numbers for each infection.
+
+```{r}
+#| label: fig-share
+#| fig-cap: "Bloodstream infection is 6% of all infections but causes 24% of the healthy years lost. Germany, 2011 and 2012."
+#| fig-alt: "Two bar charts. Bloodstream infection has the shortest bar for share of infections and a long bar for share of healthy years lost."
+#| echo: false
+#| fig-width: 8
+#| fig-height: 3.8
+
+focus_colours <- c("Context" = "#B8B8B8", "Focus" = "#0B4F6C")
+
+ggplot(burden_share, aes(x = share, y = fct_reorder(infection, cases), fill = focus)) +
+  geom_col() +
+  geom_text(aes(label = paste0(round(share), "%")), hjust = -0.2, size = 3.5) +
+  facet_wrap(~measure) +
+  scale_fill_manual(values = focus_colours, guide = "none") +
+  scale_x_continuous(limits = c(0, 55)) +
+  labs(x = "Percentage of the total", y = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank())
+```
