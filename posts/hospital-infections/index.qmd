@@ -25,7 +25,24 @@ burden <- tribble(
 )
 ```
 
-The numbers in this post come from a study by @zacher2019.
+Patients can catch infections in hospital. In Germany, urinary tract infections were almost half of these infections in 2011 and 2012. Bloodstream infections were only 6%. Bloodstream infections still caused almost as much harm as urinary tract infections.
+
+## The problem with counting infections
+
+The simple way to measure hospital infections is to count them. A count treats every infection as equal. A mild infection and a deadly infection each count as one.
+
+This post asks two questions.
+
+1. Which hospital infection is the most common?
+2. Is the most common infection also the most harmful?
+
+## Analysis of the German data
+
+The numbers in this post come from a study by @zacher2019. The study was published in the journal *Eurosurveillance*. The researchers used a hospital survey from 2011 and 2012. Staff checked every patient for infections on a single day. The German part of the survey had 46 hospitals and 9,626 patients. The researchers used these results to estimate the yearly numbers for all of Germany.
+
+::: {.key-term}
+**Healthy years lost** is the measure of harm in this post. It adds two things together. The first is the years that people lose when they die early. The second is the years that people live in poor health. Researchers call this measure a DALY.
+:::
 
 ```{r}
 #| echo: false
@@ -42,7 +59,9 @@ burden_share <- burden |>
   )
 ```
 
-@fig-share shows two numbers for each infection.
+### The most common infection
+
+Urinary tract infection is the most common hospital infection. It is 45% of all infections. @fig-share shows this share in the left panel. This result answers the first question.
 
 ```{r}
 #| label: fig-share
@@ -65,7 +84,12 @@ ggplot(burden_share, aes(x = share, y = fct_reorder(infection, cases), fill = fo
   theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank())
 ```
 
-@tbl-per-case shows the harm from one infection.
+### The harm from each infection
+
+The right panel of @fig-share shows a different order. Urinary tract infection causes 27% of the healthy years lost. Bloodstream infection is only 6% of all infections. It causes 24% of the healthy years lost. Pneumonia causes the largest share at 28%.
+
+@tbl-per-case shows the harm from one infection. I calculated these numbers from the figures in the study. One hundred bloodstream infections cost about 216 healthy years. One hundred urinary tract infections cost about 31 healthy years. One bloodstream infection is about seven times as harmful as one urinary tract infection.
+
 ```{r}
 #| label: tbl-per-case
 #| tbl-cap: "One bloodstream infection costs about seven times as much healthy life as one urinary tract infection. Germany, 2011 and 2012."
@@ -80,3 +104,15 @@ burden |>
     align = c("l", "r", "r")
   )
 ```
+
+Bloodstream infections are more deadly than urinary tract infections. Between 9% and 20% of bloodstream infections end in death [@zacher2019]. This result answers the second question. The most common infection is not the most harmful infection.
+
+### The limits of these numbers
+
+These numbers are estimates. The survey looked at each hospital on a single day. The researchers used that single day to estimate a full year. The survey is also from 2011 and 2012. The numbers may be different in hospitals today.
+
+## Conclusion
+
+This post asked two questions. The first question was about the most common infection. Urinary tract infection is the most common. It is 45% of all hospital infections. The second question was about harm. The most common infection is not the most harmful infection. One bloodstream infection is about seven times as harmful as one urinary tract infection.
+
+A count of infections does not show this harm. A hospital can report a low number of infections. A reader can then ask two things. Which infections were they? How serious were they?

@@ -20,3 +20,9 @@ h1, h2, h3 {
   color: #ffffff;
   opacity: 1;
 }
+
+.key-term {
+  border-left: 6px solid #0b4f6c;
+  padding: 1rem;
+  background-color: #ffffff;
+}
