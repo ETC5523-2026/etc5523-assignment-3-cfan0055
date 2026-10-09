@@ -3,6 +3,10 @@
 
 This repository holds my website for ETC5523 Assignment 3.
 
+## Website
+
+https://etc5523-2026.github.io/etc5523-assignment-3-cfan0055/
+
 ## Audience
 
 This blog post is for adult readers with no training in medicine or statistics.
