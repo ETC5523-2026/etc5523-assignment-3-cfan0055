@@ -1,13 +1,21 @@
 ---
-title: "About"
+title: "Chenghuiyu Fan"
 image: profile.jpg
 about:
   template: jolla
   links:
     - icon: github
       text: Github
-      href: https://github.com/etc5523-2022
+      href: https://github.com/cfan0055
+    - icon: envelope
+      text: Email
+      href: mailto:cfan0055@student.monash.edu
+    - icon: tv
+      text: Bilibili Link
+      href: https://space.bilibili.com/262436413
 
 ---
 
-This is a blog template for the ETC5523 Communicating with Data assessment at Monash University.
+I study the Master of Business Analytics at Monash University. I am learning to turn data into clear stories for people who are not data specialists.
+
+This site holds my data stories. My first story is about infections in German hospitals. The main result is that the most common infection is not the most harmful infection.
